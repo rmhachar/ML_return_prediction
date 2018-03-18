@@ -16,7 +16,7 @@ from sklearn.ensemble import RandomForestClassifier
 np.random.seed(0)
 
 # Load File
-file_loc = "market_return_data_full_sample.csv"
+file_loc = "data/market_return_data_full_sample.csv"
 
 # Read File
 data = pd.read_csv(file_loc)
