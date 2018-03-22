@@ -85,7 +85,7 @@ clf.predict_proba(x_test[features])[0:10]
 
 possible_y = np.array(['down','up'])
 
-### Create actual english names for the plants for each predicted plant class
+# create Array for predictions 'preds'
 preds = possible_y[clf.predict(x_test[features])]
 
 # Create confusion matrix
