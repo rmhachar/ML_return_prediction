@@ -85,7 +85,7 @@ clf.predict_proba(x_test[features])[0:10]
 
 possible_y = np.array(['down','up'])
 
-# create Array for predictions 'preds'
+# Create array for predictions 'preds'
 preds = possible_y[clf.predict(x_test[features])]
 
 # Create confusion matrix
