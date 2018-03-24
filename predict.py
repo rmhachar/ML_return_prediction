@@ -56,16 +56,16 @@ data_filtered
 
 # STEP 3: Create and Train the Classifier
 
-# Create a random forest Classifier. By convention, clf means 'Classifier'
+# Create a random forest classifier.
 clf = RandomForestClassifier(n_jobs=2, random_state=0)
 
-# Train the Classifier to take the training features and learn how they relate
+# Train the classifier to take the training features and learn how they relate
 # to the training y (whether or not a stock's annual return is ten percent or greater)
 clf.fit(x_train[features], y_train)
 
 # STEP 4: Predict using the Classifier
 
-# Apply the Classifier we trained to the test data (which, remember, it has never seen before)
+# Apply the Classifier we trained to the test data
 clf.predict(x_test[features])[1:10]
 
 # Create an array of predictions
@@ -92,3 +92,22 @@ preds = possible_y[clf.predict(x_test[features])]
 pd.crosstab(y_test, preds, rownames=['y'], colnames=['possible_y'])
 
 
+# STEP 6: Feature Analysis
+
+mask = (test_data_temp['predictions'] == 1)
+test_data_temp[mask].head()
+(test_data_temp[mask]).count()
+
+cluster_data = test_data_temp[mask]
+all_data = test_data_temp
+
+scaler = StandardScaler()
+scaled_data = scaler.fit_transform(cluster_data)
+
+pca = PCA(n_components=2)
+PCA_reduced_df = pca.fit(scaled_data).transform(scaled_data)
+
+features = pd.DataFrame(list(zip(cluster_data.columns, pca.components_[0], np.mean(cluster_data), np.mean(all_data))),
+        columns=['Feature', 'Importance', 'Cluster Average', 'Overall Average']).sort_values('Importance', ascending=False).head(10)
+
+features.reset_index().drop('index', axis=1)
