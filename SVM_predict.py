@@ -71,9 +71,6 @@ clf.fit(scaled_data_train,y_train)
 
 # STEP 6: Create a Confusion Matrix
 
-# View the predicted probabilities of the first 10 observations
-#clf.predict_proba(x_test[features])[0:10]
-
 possible_y = np.array(['down','up'])
 
 # Create array for predictions 'preds'
