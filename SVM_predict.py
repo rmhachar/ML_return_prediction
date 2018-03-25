@@ -59,7 +59,7 @@ print('Number of observations in the test data:',len(x_test))
 
 scaler = StandardScaler()
 scaled_data_train = scaler.fit_transform(x_train[features])
-scaled_data_test = scaler.fit_transform(x_test[features])
+scaled_data_test = scaler.transform(x_test[features])
 
 # STEP 5: Create and Train the Classifier
 
