@@ -1,6 +1,6 @@
-# RF_return_prediction
+# ML_return_prediction
 
-The following is a basic tutorial for predicting market returns with Python.
+The following is a basic tutorial for predicting market returns with Python's machine learning packages.
 
 # The Data
 
